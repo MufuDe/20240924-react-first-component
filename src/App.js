@@ -1,27 +1,31 @@
-import Gallery from "./component/Gallery";
-import TodoList from "./component/TodoList";
-import Avatar from "./component/Avatar";
-import Profile from "./component/Profile";
+import { useState, useEffect } from "react";
+import Clock from "./component/Clock";
+
+function useTime() {
+  const [time, setTime] = useState(() => new Date());
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+  return time;
+}
 
 export default function App() {
+  const time = useTime();
+  const [color, setColor] = useState("lightcoral");
   return (
-    <>
-      <section>
-        <h1>Profile</h1>
-        <Profile />
-      </section>
-      <section>
-        <h1>Gallery</h1>
-        <Gallery />
-      </section>
-      <section>
-        <h1>TodoList</h1>
-        <TodoList />
-      </section>
-      <section>
-        <h1>Avatar</h1>
-        <Avatar />
-      </section>
-    </>
+    <div>
+      <p>
+        选择一个颜色:{" "}
+        <select value={color} onChange={(e) => setColor(e.target.value)}>
+          <option value="lightcoral">浅珊瑚色</option>
+          <option value="midnightblue">午夜蓝</option>
+          <option value="rebeccapurple">丽贝卡紫</option>
+        </select>
+      </p>
+      <Clock color={color} time={time.toLocaleTimeString()} />
+    </div>
   );
 }

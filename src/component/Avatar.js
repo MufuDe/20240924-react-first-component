@@ -1,21 +1,13 @@
-export default function Avatar() {
-  const person = {
-    name: "Gregorio Y. Zara",
-    theme: {
-      backgroundColor: "black",
-      color: "pink",
-    },
-  };
+import { getImageUrl } from "../js/utils";
 
+export default function Avatar({ person, size }) {
   return (
-    <div style={person.theme}>
-      <h1>{person.name}'s Todos</h1>
-      <img className="avatar" src="/img/7vQD0fPs.jpg" alt="Gregorio Y. Zara" />
-      <ul>
-        <li>Improve the videophone</li>
-        <li>Prepare aeronautics lectures</li>
-        <li>Work on the alcohol-fuelled engine</li>
-      </ul>
-    </div>
+    <img
+      className="avatar"
+      src={getImageUrl(person)}
+      alt={person.name}
+      width={size}
+      height={size}
+    />
   );
 }

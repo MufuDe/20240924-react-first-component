@@ -1,7 +1,7 @@
 import Gallery from "./component/Gallery";
-import { Profile } from "./component/Profile";
 import TodoList from "./component/TodoList";
 import Avatar from "./component/Avatar";
+import Profile from "./component/Profile";
 
 export default function App() {
   return (

@@ -1,9 +1,9 @@
-import PackingList from "./component/PackingList";
+import List from "./component/List";
 
 export default function App() {
   return (
     <>
-      <PackingList />
+      <List />
     </>
   );
 }
